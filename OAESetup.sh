@@ -29,7 +29,7 @@ if [[ $? -eq 0 ]] ; then
 else
 	echo 'JAVA is not in PATH' #if its not in the path then put it in the bashrc
 	echo "export JAVA_HOME=/home/oae/OAE/jre1.8.0_25" >> /home/oae/.bashrc
-	echo 'export PATH=$PATH:$NODEJS_HOME/bin' >> /home/oae/.bashrc
+	echo 'export PATH=$PATH:$JAVA_HOME' >> /home/oae/.bashrc
 fi
 
 #Apache-Cassandra
@@ -44,7 +44,7 @@ sudo chown -R oea /var/lib/cassandra
 #Redis--------------------------
 wget http://download.redis.io/releases/redis-2.8.19.tar.gz #Redis Download
 sudo yum group install "Development Tools" #Dependencies
-tar -zxvf radis*.tar.gz -C ~/OAE #Unpack Redis and Move it to ~/OAE
+tar -zxvf redis*.tar.gz -C ~/OAE #Unpack Redis and Move it to ~/OAE
 cd ~/OAE/redis-2.8.19
 make
 sudo make install
@@ -61,7 +61,7 @@ tar -zxvf elasticsearch*.tar.gz -C ~/OAE
 su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm'
 sudo yum install erlang
 sudo rpm --import http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
-rpm -Uvh http://www.rabbitmq.com/releases/rabbitmq-server/v3.1.4/rabbitmq-server-3.1.4-1.noarch.rpm
+sudo rpm -Uvh http://www.rabbitmq.com/releases/rabbitmq-server/v3.1.4/rabbitmq-server-3.1.4-1.noarch.rpm
 #RabbitMQ-----------------------
 
 #GraphicsMagick-----------------
@@ -111,8 +111,8 @@ cd ep_oae
 npm install
 cp static/css/pad.css ../../src/static/custom/pad.css
 cd ../..
-sed -i "s/\"xhr-polling/\"websocket\"\, \"xhr-polling/g" settings.json
-sed -i '/defaultPadText/c \"defaultPadText\"\ \:\ \"\"' settings.json
+#sed -i "s/\"xhr-polling/\"websocket\"\, \"xhr-polling/g" settings.json
+#sed -i '/defaultPadText/c \"defaultPadText\"\ \:\ \"\"' settings.json
 #EtherPad-lite------------------
 
 #Hilary/3akai-ux----------------
