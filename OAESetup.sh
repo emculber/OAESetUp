@@ -20,6 +20,7 @@ fi
 
 #Apache-Cassandra---------------
 #Orical Java 7
+sudo yum remove java*
 wget sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" \
 "http://download.oracle.com/otn-pub/java/jdk/8u25-b17/jre-8u25-linux-x64.tar.gz" #Orical Java 7 Download
 tar -zxvf jre*.tar.gz -C ~/OAE #Unpack Java and move it to ~/OAE
@@ -29,7 +30,7 @@ if [[ $? -eq 0 ]] ; then
 else
 	echo 'JAVA is not in PATH' #if its not in the path then put it in the bashrc
 	echo "export JAVA_HOME=/home/oae/OAE/jre1.8.0_25" >> /home/oae/.bashrc
-	echo 'export PATH=$PATH:$JAVA_HOME' >> /home/oae/.bashrc
+	echo 'export PATH=$JAVA_HOME/bin:$PATH' >> /home/oae/.bashrc
 fi
 
 #Apache-Cassandra
@@ -38,7 +39,7 @@ tar -zxvf apache*.tar.gz -C ~/OAE #Unpack Apache-Cassandra and move to ~/OAE
 sudo mkdir -p /var/log/cassandra
 sudo chown -R oae /var/log/cassandra
 sudo mkdir -p /var/lib/cassandra
-sudo chown -R oea /var/lib/cassandra
+sudo chown -R oae /var/lib/cassandra
 #Apache-Cassandra---------------
 
 #Redis--------------------------
@@ -111,8 +112,8 @@ cd ep_oae
 npm install
 cp static/css/pad.css ../../src/static/custom/pad.css
 cd ../..
-#sed -i "s/\"xhr-polling/\"websocket\"\, \"xhr-polling/g" settings.json
-#sed -i '/defaultPadText/c \"defaultPadText\"\ \:\ \"\"' settings.json
+sed -i "s/\"xhr-polling/\"websocket\"\, \"xhr-polling/g" settings.json
+sed -i '/defaultPadText/c \"defaultPadText\"\ \:\ \"\"' settings.json
 #EtherPad-lite------------------
 
 #Hilary/3akai-ux----------------
