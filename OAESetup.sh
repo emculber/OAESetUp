@@ -45,6 +45,8 @@ sudo chown -R oae /var/lib/cassandra
 #Redis--------------------------
 wget http://download.redis.io/releases/redis-2.8.19.tar.gz #Redis Download
 sudo yum group install "Development Tools" #Dependencies
+sudo yum install #----
+sudo yum install bzip2-devel.x86_64
 tar -zxvf redis*.tar.gz -C ~/OAE #Unpack Redis and Move it to ~/OAE
 cd ~/OAE/redis-2.8.19
 make
@@ -123,4 +125,19 @@ git clone git://github.com/oaeproject/3akai-ux.git
 sudo bash -c "echo '127.0.0.1  admin.oakland.edu' >> /etc/hosts"
 sudo bash -c "echo '127.0.0.1  oae.oakland.edu' >> /etc/hosts"
 mkdir /home/oae/OAE/uploads
+mkdir /home/oae/OAE/files
+cd Hilary
+sed -i "/uploads'/c'uploadsDir': '/home/oae/OAE/uploads'" config.js
+sed -i 's/admin.oae.com/admin.oakland.edu/g' config.js
+APIKEY=$(cat /home/oae/OAE/ehterpad-lite/APIKEY.txt)
+sed -i "/'apikey'/c'apikey': '$APIKEY'" config.js
+#TODO(erik): enable prevew processing when implimented
+cd ../3akai-ux/nginx/
+sed -i 's/<%= nginxConf.NGINX_USER %>/oae/g' nginx.conf
+sed -i 's/<%= nginxConf.NGINX_GROUP %>/oae/g' nginx.conf
+sed -i 's/<%= nginxConf.NGINX_HOSTNAME %>/admin.oakland.edu/g' nginx.conf
+sed -i 's/<%= nginxConf.UX_HOME %>/\/home\/oae\/OAE\/3akai-ux/g' nginx.conf
+sed -i 's/<%= nginxConf.LOCAL_FILE_STORAGE_DIRECTORY %>/\/home\/oae\/OAE\/files/g' nginx.conf
+cd ../../Hilary
+npm install -d
 #Hilary/3akai-ux----------------
