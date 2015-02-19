@@ -20,7 +20,6 @@ fi
 
 #Apache-Cassandra---------------
 #Orical Java 7
-sudo yum remove java*
 wget sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" \
 "http://download.oracle.com/otn-pub/java/jdk/8u25-b17/jre-8u25-linux-x64.tar.gz" #Orical Java 7 Download
 tar -zxvf jre*.tar.gz -C ~/OAE #Unpack Java and move it to ~/OAE
@@ -45,8 +44,7 @@ sudo chown -R oae /var/lib/cassandra
 #Redis--------------------------
 wget http://download.redis.io/releases/redis-2.8.19.tar.gz #Redis Download
 sudo yum group install "Development Tools" #Dependencies
-sudo yum install #----
-sudo yum install bzip2-devel.x86_64
+sudo yum install tcl-devel.x86_64
 tar -zxvf redis*.tar.gz -C ~/OAE #Unpack Redis and Move it to ~/OAE
 cd ~/OAE/redis-2.8.19
 make
@@ -70,9 +68,9 @@ sudo rpm -Uvh http://www.rabbitmq.com/releases/rabbitmq-server/v3.1.4/rabbitmq-s
 #GraphicsMagick-----------------
 sudo yum install -y gcc libpng libjpeg libpng-devel libjpeg-devel ghostscript
 sudo yum install -y libtiff libtiff-devel freetype freetype-devel
-wget ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/1.3/GraphicsMagick-1.3.9.tar.gz #GraphicsMagick
+wget ftp://ftp.graphicsmagick.org/pub/GraphicsMagick/1.3/GraphicsMagick-1.3.20.tar.gz #GraphicsMagick
 tar -zxvf GraphicsMagick*.tar.gz -C ~/OAE
-cd ~/OAE/GraphicsMagick-1.3.9
+cd ~/OAE/GraphicsMagick-1.3.20
 ./configure --enable-shared
 make
 sudo make install
