@@ -127,7 +127,7 @@ mkdir /home/oae/OAE/files
 cd Hilary
 sed -i "/uploads'/c'uploadsDir': '/home/oae/OAE/uploads'" config.js
 sed -i 's/admin.oae.com/admin.oakland.edu/g' config.js
-APIKEY=$(cat /home/oae/OAE/ehterpad-lite/APIKEY.txt)
+APIKEY=$(cat /home/oae/OAE/etherpad-lite/APIKEY.txt)
 sed -i "/'apikey'/c'apikey': '$APIKEY'" config.js
 #TODO(erik): enable prevew processing when implimented
 cd ../3akai-ux/nginx/
