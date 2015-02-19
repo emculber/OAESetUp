@@ -113,7 +113,7 @@ npm install
 cp static/css/pad.css ../../src/static/custom/pad.css
 cd ../..
 sed -i "s/\"xhr-polling/\"websocket\"\, \"xhr-polling/g" settings.json
-sed -i '/defaultPadText/c \"defaultPadText\"\ \:\ \"\"' settings.json
+sed -i '/defaultPadText/c \"defaultPadText\"\ \:\ \"\",' settings.json
 #EtherPad-lite------------------
 
 #Hilary/3akai-ux----------------
@@ -125,10 +125,10 @@ sudo bash -c "echo '127.0.0.1  oae.oakland.edu' >> /etc/hosts"
 mkdir /home/oae/OAE/uploads
 mkdir /home/oae/OAE/files
 cd Hilary
-sed -i "/uploads'/c'uploadsDir': '/home/oae/OAE/uploads'" config.js
+sed -i "/uploads'/c'uploadsDir': '/home/oae/OAE/uploads'," config.js
 sed -i 's/admin.oae.com/admin.oakland.edu/g' config.js
 APIKEY=$(cat /home/oae/OAE/etherpad-lite/APIKEY.txt)
-sed -i "/'apikey'/c'apikey': '$APIKEY'" config.js
+sed -i "/'apikey'/c'apikey': '$APIKEY'," config.js
 #TODO(erik): enable prevew processing when implimented
 cd ../3akai-ux/nginx/
 sed -i 's/<%= nginxConf.NGINX_USER %>/oae/g' nginx.conf
