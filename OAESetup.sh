@@ -114,6 +114,8 @@ do
 	sudo yum install -y gzip git curl python openssl-devel && yum groupinstall -y "Development Tools"
 	git clone git://github.com/ether/etherpad-lite.git
 	cd etherpad-lite
+	git fetch --tags
+	git checkout tags/1.4.0
 	bin/run.sh
 	cd node_modules
 	git clone https://github.com/oaeproject/ep_oae
