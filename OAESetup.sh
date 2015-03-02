@@ -7,7 +7,8 @@ cd ~/Downloads
 
 for var in "$@"
 do
-    if [[ $var == *"Node"* ]] then	
+    if [[ $var == *"Node"* ]]
+    then	
 	#NODEJS-------------------------
 	wget http://nodejs.org/dist/v0.10.36/node-v0.10.36-linux-x64.tar.gz #Node.js Download
 	tar -zxvf node*.tar.gz -C ~/OAE #Unpack Node.JS and move to ~/OAE
@@ -21,7 +22,8 @@ do
 	fi
 	#NODEJS-------------------------
     fi
-    if [[ $var == *"Cassandra"* ]] then	
+    if [[ $var == *"Cassandra"* ]]
+    then	
 	#Apache-Cassandra---------------
 	#Orical Java 7
 	sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" \
@@ -45,7 +47,8 @@ do
 	sudo chown -R oae /var/lib/cassandra
 	#Apache-Cassandra---------------
     fi
-    if [[ $var == *"Redis"* ]] then	
+    if [[ $var == *"Redis"* ]]
+    then	
 	#Redis--------------------------
 	wget http://download.redis.io/releases/redis-2.8.19.tar.gz #Redis Download
 	sudo yum group install -y "Development Tools" #Dependencies
@@ -57,13 +60,15 @@ do
 	cd ~/Downloads
 	#Redis--------------------------
     fi
-    if [[ $var == *"ElasticSearch"* ]] then	
+    if [[ $var == *"ElasticSearch"* ]]
+    then	
 	#ElasticSearch------------------
 	wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.2.tar.gz #ElasticSearch
 	tar -zxvf elasticsearch*.tar.gz -C ~/OAE
 	#ElasticSearch------------------
     fi
-    if [[ $var == *"RabbitMQ"* ]] then	
+    if [[ $var == *"RabbitMQ"* ]]
+    then	
 	#RabbitMQ-----------------------
 	su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm'
 	sudo yum install -y erlang
@@ -71,7 +76,8 @@ do
 	sudo rpm -Uvh http://www.rabbitmq.com/releases/rabbitmq-server/v3.1.4/rabbitmq-server-3.1.4-1.noarch.rpm
 	#RabbitMQ-----------------------
     fi
-    if [[ $var == *"GraphicsMagick"* ]] then	
+    if [[ $var == *"GraphicsMagick"* ]]
+    then	
 	#GraphicsMagick-----------------
 	sudo yum install -y gcc libpng libjpeg libpng-devel libjpeg-devel ghostscript
 	sudo yum install -y libtiff libtiff-devel freetype freetype-devel
@@ -84,16 +90,18 @@ do
 	cd ~/Downloads
 	#GraphicsMagick-----------------
     fi
-    if [[ $var == *"PreviewProcessor"* ]] then	
+    if [[ $var == *"PreviewProcessor"* ]]
+    then	
 	#Preview-Processor--------------
 	#pdf2htmlEX---------------------
 	#pdf2htmlEX---------------------
-
+        echo "Preview Processor not Avalable"
 	#LibreOffice--------------------
 	#LibreOffice--------------------
 	#Preview-Processor--------------
     fi
-    if [[ $var == *"Nginx"* ]] then	
+    if [[ $var == *"Nginx"* ]]
+    then	
 	#Nginx--------------------------
 	#PCRE
 	wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.35.tar.gz #PCRE
@@ -108,7 +116,8 @@ do
 	sudo make install
 	#Nginx--------------------------
     fi
-    if [[ $var == *"Etherpad"* ]] then	
+    if [[ $var == *"Etherpad"* ]]
+    then	
 	#Etherpad-lite------------------
 	cd ~/OAE/
 	sudo yum install -y gzip git curl python openssl-devel && yum groupinstall -y "Development Tools"
@@ -127,7 +136,8 @@ do
 	sed -i '/defaultPadText/c \"defaultPadText\"\ \:\ \"\",' settings.json
 	#EtherPad-lite------------------
     fi
-    if [[ $var == *"Hilary"* ]] then	
+    if [[ $var == *"Hilary"* ]]
+    then	
 	#Hilary/3akai-ux----------------
 	cd ~/OAE
 	git clone git://github.com/oaeproject/Hilary.git
