@@ -142,6 +142,13 @@ do
 	cd ~/OAE
 	git clone git://github.com/oaeproject/Hilary.git
 	git clone git://github.com/oaeproject/3akai-ux.git
+        cd Hillary
+        git fetch --tags
+        git checkout tags/9.3.2
+        cd ~/OAE/3akai-ux
+        git fetch --tags
+        git checkout tags/9.3.2
+        cd ~/OAE
 	sudo bash -c "echo '127.0.0.1  admin.oakland.edu' >> /etc/hosts"
 	sudo bash -c "echo '127.0.0.1  oae.oakland.edu' >> /etc/hosts"
 	mkdir /home/oae/OAE/uploads
